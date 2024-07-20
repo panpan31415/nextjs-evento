@@ -1,4 +1,4 @@
-import H1 from "@/components/EventHeader";
+import H1 from "@/components/eventHeader";
 import { Event } from "@/lib/types";
 
 type CityEventsPageProps = {
