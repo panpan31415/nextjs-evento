@@ -1,4 +1,5 @@
-import H1 from "@/components/eventHeader";
+import H1 from "@/components/event-header";
+import EventList from "@/components/event-list";
 import { Event } from "@/lib/types";
 
 type CityEventsPageProps = {
@@ -21,10 +22,8 @@ export default async function CityEventsPage({ params }: CityEventsPageProps) {
     const events: Event[] = await response.json();
     return (
         <main className='flex flex-col items-center py-24 px-[20px] min-h-[110vh]'>
-            <H1>{headerText}</H1>
-            {events.map((event) => (
-                <section key={event.id}> {event.name}</section>
-            ))}
+            <H1 className='mb-28'>{headerText}</H1>
+            <EventList events={events} />
         </main>
     );
 }
