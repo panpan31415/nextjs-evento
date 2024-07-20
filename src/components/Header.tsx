@@ -21,13 +21,10 @@ export default function Header() {
                     {routes.map((route) => (
                         <li
                             key={route.name}
-                            className={clsx(
-                                "hover:text-white transition  items-center relative flex h-full items-center",
-                                {
-                                    "text-white/100": activePath === route.path,
-                                    "text-white/50": activePath !== route.path,
-                                },
-                            )}>
+                            className={clsx("hover:text-white transition relative flex h-full items-center", {
+                                "text-white/100": activePath === route.path,
+                                "text-white/50": activePath !== route.path,
+                            })}>
                             <Link href={route.path}>{route.name}</Link>
                             {activePath === route.path && (
                                 <motion.div
