@@ -1,6 +1,7 @@
 import H1 from "@/components/event-header";
 import EventList from "@/components/event-list";
 import { Event } from "@/lib/types";
+import { sleep } from "@/lib/utils";
 
 type CityEventsPageProps = {
     params: {
@@ -17,7 +18,7 @@ export default async function CityEventsPage({ params }: CityEventsPageProps) {
     } else {
         headerText = "Events in " + city.charAt(0).toUpperCase() + city.slice(1);
     }
-
+    await sleep(2000);
     const response = await fetch(`${EVENTS_API_URL}?city=${city}`);
     const events: Event[] = await response.json();
     return (
