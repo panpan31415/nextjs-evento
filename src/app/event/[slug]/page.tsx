@@ -30,9 +30,9 @@ export default async function EventPage({ params }: EventPageProps) {
                         alt={event.name}
                         width={300}
                         height={201}
-                        className='relative rounded-xl bottom-2 border-white/50 object-cover'
+                        className='relative rounded-xl border-2 border-white/50 object-cover'
                     />
-                    <div className='relative  flex flex-col'>
+                    <div className='relative  flex flex-col h-[201px]'>
                         <p className=' text-white/75'>
                             {new Date(event.date).toLocaleDateString("en-US", {
                                 weekday: "long",
@@ -44,7 +44,7 @@ export default async function EventPage({ params }: EventPageProps) {
                         <p className='whitespace-nowrap text-xl text-white/75'>
                             Organized by <span className='italic'>{event.organizerName}</span>
                         </p>
-                        <button className='bg-white/20 text-lg w-[95vw] sm:w-full rounded-md border-2 border-white/10 py-2 mt-5 hover:scale-105 active:scale-[1.02] transition focus:scale-[1.02]'>
+                        <button className='bg-white/20 text-lg w-[95vw] sm:w-full rounded-md border-2 border-white/10 py-2 mt-5 lg:mt-auto hover:scale-105 active:scale-[1.02] transition focus:scale-[1.02]'>
                             Get Tickets
                         </button>
                     </div>
