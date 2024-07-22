@@ -1,6 +1,7 @@
 import EventDetailSection from "@/components/event-detail-section";
 import H1 from "@/components/event-header";
-import { Event } from "@/lib/types";
+import { capitalize, fetchEventBySlug } from "@/lib/utils";
+import { Metadata } from "next";
 // import { sleep } from "@/lib/utils";
 import Image from "next/image";
 
@@ -9,12 +10,19 @@ type EventPageProps = {
         slug: string;
     };
 };
-const EVENTS_API_URL = "https://bytegrad.com/course-assets/projects/evento/api/events";
+
+export async function generateMetadata({ params }: EventPageProps): Promise<Metadata> {
+    const event = await fetchEventBySlug(params.slug);
+    return {
+        title: "Event - " + event.name,
+        description: event.description,
+    };
+}
 
 export default async function EventPage({ params }: EventPageProps) {
     // await sleep(2000);
-    const response = await fetch(EVENTS_API_URL + "/" + params.slug);
-    const event: Event = await response.json();
+    const event = await fetchEventBySlug(params.slug);
+
     return (
         <main>
             <section className='relative  overflow-hidden flex justify-center items-center p-16'>
@@ -60,7 +68,7 @@ export default async function EventPage({ params }: EventPageProps) {
                 />
                 <EventDetailSection
                     title='Location'
-                    description={event.location}
+                    description={capitalize(event.location)}
                 />
             </div>
         </main>

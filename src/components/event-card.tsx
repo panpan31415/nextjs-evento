@@ -1,4 +1,5 @@
 import { Event } from "@/lib/types";
+import { capitalize } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -22,7 +23,7 @@ export default function EventCard({ event }: EventCardProps) {
                 <div className='flex flex-col flex-1 justify-center items-center'>
                     <h2 className='text-2xl font-semibold '>{event.name}</h2>
                     <p className='italic text-white/75'>By {event.organizerName}</p>
-                    <p className='text-sm text-white/50 mt-4'>{event.location}</p>
+                    <p className='text-sm text-white/50 mt-4'>{capitalize(event.location)}</p>
                 </div>
 
                 <section className='absolute left-[12px] top-[12px] h-[45px] aspect-square  bg-black/30 rounded-md flex justify-center items-center flex-col'>

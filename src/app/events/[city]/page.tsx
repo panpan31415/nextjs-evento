@@ -2,6 +2,8 @@ import H1 from "@/components/event-header";
 import EventList from "@/components/event-list";
 import { Suspense } from "react";
 import Loading from "./loading";
+import { Metadata } from "next";
+import { capitalize } from "@/lib/utils";
 
 type CityEventsPageProps = {
     params: {
@@ -9,13 +11,18 @@ type CityEventsPageProps = {
     };
 };
 
+export function generateMetadata({ params }: CityEventsPageProps): Metadata {
+    return {
+        title: params.city === "all" ? "All events" : "Event in " + capitalize(params.city),
+    };
+}
 export default function CityEventsPage({ params }: CityEventsPageProps) {
     const { city } = params;
     let headerText = "";
     if (city.trim() === "all") {
         headerText = "All events";
     } else {
-        headerText = "Events in " + city.charAt(0).toUpperCase() + city.slice(1);
+        headerText = "Events in " + capitalize(city);
     }
 
     return (
