@@ -1,6 +1,7 @@
 import EventDetailSection from "@/components/event-detail-section";
 import H1 from "@/components/event-header";
 import { Event } from "@/lib/types";
+import { sleep } from "@/lib/utils";
 import Image from "next/image";
 
 type EventPageProps = {
@@ -11,6 +12,7 @@ type EventPageProps = {
 const EVENTS_API_URL = "https://bytegrad.com/course-assets/projects/evento/api/events";
 
 export default async function EventPage({ params }: EventPageProps) {
+    await sleep(2000);
     const response = await fetch(EVENTS_API_URL + "/" + params.slug);
     const event: Event = await response.json();
     return (
