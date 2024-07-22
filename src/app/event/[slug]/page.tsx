@@ -1,3 +1,4 @@
+import EventDetailSection from "@/components/event-detail-section";
 import H1 from "@/components/event-header";
 import { Event } from "@/lib/types";
 import Image from "next/image";
@@ -49,7 +50,17 @@ export default async function EventPage({ params }: EventPageProps) {
                     </div>
                 </div>
             </section>
-            <div></div>
+            <div className='min-h-[50vh] flex flex-col items-center px-5 py-16'>
+                <EventDetailSection
+                    title='About this event'
+                    description={event.description}
+                    className='mb-20'
+                />
+                <EventDetailSection
+                    title='Location'
+                    description={event.location}
+                />
+            </div>
         </main>
     );
 }
