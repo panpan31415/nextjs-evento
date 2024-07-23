@@ -1,6 +1,7 @@
 "use client";
-import { Event } from "@/lib/types";
+
 import { capitalize } from "@/lib/utils";
+import { Event } from "@prisma/client";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";

@@ -1,6 +1,6 @@
+import { Event } from "@prisma/client";
 import clsx, { ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { Event } from "./types";
 
 export function cn(...classNames: ClassValue[]) {
     return twMerge(clsx(classNames));

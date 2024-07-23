@@ -1,4 +1,4 @@
-import { Event } from "@/lib/types";
+import { Event } from "@prisma/client";
 import EventCard from "./event-card";
 import { fetchEventByCity } from "@/lib/utils";
 // import { sleep } from "@/lib/utils";
