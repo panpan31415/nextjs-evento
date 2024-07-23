@@ -1,6 +1,7 @@
 import clsx, { ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import prisma from "./db";
+import { notFound } from "next/navigation";
 
 export function cn(...classNames: ClassValue[]) {
     return twMerge(clsx(classNames));
@@ -20,6 +21,9 @@ export async function fetchEventBySlug(slug: string) {
     const event = await prisma.event.findUnique({
         where: { slug },
     });
+    if (!event) {
+        return notFound();
+    }
     return event;
 }
 
