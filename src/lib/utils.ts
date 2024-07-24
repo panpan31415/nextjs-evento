@@ -27,7 +27,12 @@ export async function fetchEventBySlug(slug: string) {
     return event;
 }
 
-export async function fetchEventByCity(city: string) {
+type fetchEventByCityParams = {
+    city: string;
+    size: number;
+    page: number;
+};
+export async function fetchEventByCity({ city, size = 6, page = 1 }: fetchEventByCityParams) {
     const events = await prisma.event.findMany({
         where: {
             city: city === "all" ? undefined : capitalize(city),
@@ -35,6 +40,14 @@ export async function fetchEventByCity(city: string) {
         orderBy: {
             date: "asc",
         },
+        take: size,
+        skip: (page - 1) * size,
     });
-    return events;
+
+    const total = await prisma.event.count({
+        where: {
+            city: city === "all" ? undefined : capitalize(city),
+        },
+    });
+    return { events, total };
 }

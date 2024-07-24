@@ -1,16 +1,22 @@
 import { Event } from "@prisma/client";
 import EventCard from "./event-card";
 import { fetchEventByCity } from "@/lib/utils";
+import PaginationControls from "./pagination-controls";
 // import { sleep } from "@/lib/utils";
 
 const EVENTS_API_URL = "https://bytegrad.com/course-assets/projects/evento/api/events";
 
 type EventListProps = {
     city: string;
+    page: number;
+    size: number;
 };
-export default async function EventList({ city }: EventListProps) {
-    // await sleep(2000);
-    const events: Event[] = await fetchEventByCity(city);
+export default async function EventList({ city, page, size }: EventListProps) {
+    const { events, total } = await fetchEventByCity({ city, page, size });
+    const totalPage = Math.ceil(total / size);
+    const prevLink = page > 1 ? `/events/${city}?page=${page - 1}&size=${size}` : "";
+    const nextLink = page < totalPage ? `/events/${city}?page=${page + 1}&size=${size}` : "";
+
     return (
         <section className='flex flex-wrap gap-10 justify-center'>
             {events.map((event) => (
@@ -19,6 +25,10 @@ export default async function EventList({ city }: EventListProps) {
                     key={event.id}
                 />
             ))}
+            <PaginationControls
+                prevLink={prevLink}
+                nextLink={nextLink}
+            />
         </section>
     );
 }
