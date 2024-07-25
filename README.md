@@ -5,8 +5,7 @@ demonstration of the skills learned and applied during the development process.
 
 ## Live Demo
 
-Check out the live demo of the project here:
-[Next.js Evento](https://nextjs-evento-kzurvt5pl-panpans-projects-303bce88.vercel.app/)
+Check out the live demo of the project here: [Next.js Evento](https://nextjs-evento-teal.vercel.app/)
 
 ## Skills Learned
 
