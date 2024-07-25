@@ -1,8 +1,8 @@
 import EventDetailSection from "@/components/event-detail-section";
 import H1 from "@/components/event-header";
-import { capitalize, fetchEventBySlug } from "@/lib/utils";
+import { fetchEventBySlug } from "@/lib/server-utils";
+import { capitalize } from "@/lib/utils";
 import { Metadata } from "next";
-// import { sleep } from "@/lib/utils";
 import Image from "next/image";
 
 type EventPageProps = {

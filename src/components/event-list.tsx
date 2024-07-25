@@ -1,8 +1,6 @@
-import { Event } from "@prisma/client";
 import EventCard from "./event-card";
-import { fetchEventByCity } from "@/lib/utils";
 import PaginationControls from "./pagination-controls";
-// import { sleep } from "@/lib/utils";
+import { fetchEventByCity } from "@/lib/server-utils";
 
 const EVENTS_API_URL = "https://bytegrad.com/course-assets/projects/evento/api/events";
 

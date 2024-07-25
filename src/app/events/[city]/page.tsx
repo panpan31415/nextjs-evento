@@ -4,8 +4,7 @@ import { Suspense } from "react";
 import Loading from "./loading";
 import { Metadata } from "next";
 import { capitalize } from "@/lib/utils";
-import { notFound } from "next/navigation";
-import { number, z } from "zod";
+import { z } from "zod";
 
 type CityEventsPageProps = {
     params: {
